@@ -8,18 +8,18 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         
         res=[]
-        q=collections.deque()
-        q.append(root)
+        q=collections.deque([root])
+
         
         while q:
-            level=[]
+            mostright=None
             for i in range(len(q)):
                 node=q.popleft()
                 if node :
-                    level.append(node.val)
+                    mostright=node
                     q.append(node.left)
                     q.append(node.right)
-            if level:
-                res.append(level[-1])
+            if mostright:  
+                res.append(mostright.val)
                 
         return res
