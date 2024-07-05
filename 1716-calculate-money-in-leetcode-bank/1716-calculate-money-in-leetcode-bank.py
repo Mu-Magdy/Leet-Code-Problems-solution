@@ -1,15 +1,11 @@
 class Solution:
     def totalMoney(self, n: int) -> int:
-        res=0
-        day=0
-        dep=1
+        weeks=n//7
+        low=28
+        high=28+(7*(weeks-1))
+        res=weeks*(low+high)//2
         
-        while day<n:
-            res+=dep
-            day+=1
-            dep+=1
+        for i in range(n%7):
+            res+=i+ weeks+1
             
-            if day%7==0:
-                dep=1+day//7
-                
         return res
